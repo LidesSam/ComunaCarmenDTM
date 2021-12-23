@@ -1,45 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<title>Contacto/reclamos</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
+  <title>Contacto/reclamos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 
-<header>
-  <h2>Contacto/Reclamos</h2>
-</header>
+ <header>
+    <img src="./assets/img/comunacarmelogo-mini.png" class="roundImg"></img>
+    <h2>Reclamos(Demostrativo)</h2>
+  </header>
 
-<section>
-  <nav>
-    <ul>
-      <li><a href="#">s</a></li>
-    
-    </ul>
-  </nav>
-  
-  <article>
-    <form action="" class="vbox">
-        <input type="text">
-        <input type="text">
-        <input type="text">
+  <section>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Principal</a></li>
+
+      </ul>
+    </nav>
+
+    <article>
+      <form action="" class="vbox">
+        <label for="sender">"Remitente"</label>
+        <input type="text" id="sender" value="Anonimo">
+        <label for="senderEmail">"Email"</label>
+        <input type="text" id="senderEmail" value="ejemplo@gmail.com">
+        <input type="text" id="cellPhone" value="3462-000000">
+
+        
+
+
+        <textarea col="20"  row="20" type="text" id="msg"></textarea>
+
         <button onclick="EnviarEmail()">Enviar</button>
-    </form>
+      </form>
     </article>
-</section>
+  </section>
 
-<footer>
+ 
+  <footer>
     <p>Footer</p>
-  <a href="./contact.html">reclamos</a>
-</footer>
+    <div class="fakebutton">
+      <a  href="./contact.html">Reclamos</a>
+  </div>
+    <div class="hbox">
+
+      <a href="https://www.facebook.com/comunacarmensantafe/">
+        <img src="assets\icons\facebook-white.png">
+        </img>
+      </a>
+      <a href="https://www.instagram.com/comunadecarmen/">
+        <img src="./assets/icons/instagram-white.png" alt="">
+        </img>
+      </a>
+    </div>
+
+  </footer>
 
 </body>
-<script>
-    function EnviarEmail(){
-        alert("envindo email")
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="text/javascript">
+  (
+    function () {
+      emailjs.init("user_UebREHvUgJMOcOy0fBsNG");
+      //printInitialize
     }
-    </script>
+  )();
+
+  function EnviarEmail() {
+    let templateParams = {
+      name: 'anonimo',
+      msg: 'En Blanco !>Descartar<!'
+
+    };
+
+    let msg = document.getElementById("msg").value
+    let send=true
+    if (msg != null) {
+      if (msg != "") {
+        templateParams.msg = msg
+
+        
+
+      } else {
+        send=false
+        alert("el mensaje esta en blanco")
+      }
+
+    }
+    else {
+      send = false
+      alert("el mensaje esta en blanco")
+    }
+
+if(send){
+    emailjs.send("service_wfh8d2n", "template_iowgqbi", {
+      from_name: templateParams.name,
+      message: templateParams.msg,
+      reply_to: "lides.sam@gmail.com",
+    }).then(function (response) {
+      alert("se a enviado el mensaje exitosamente")
+      //clear msg
+      document.getElementById("msg").value = ""
+      console.log('SUCCESS!', response.status, response.text);
+    }, function (error) {
+      alert("Error al enviar el mensaje:", error)
+      console.log('FAILED...', error);
+    });;
+  }else{
+    
+  }
+
+  }
+</script>
+
 </html>
+<!---
+User ID:user_UebREHvUgJMOcOy0fBsNG
+Access Token:dcc3fd10adb36798739a1e4e31eda2e1
+your service id: service_wfh8d2n
+-->
