@@ -11,7 +11,7 @@
   body {
     display: flex;
     flex-direction: column;
-    background-color: blueviolet;
+    background-color: #666;
     height: 100%;
    
 
@@ -55,6 +55,9 @@
   }
   
   /* Style the list inside the menu */
+  
+
+  /*fake button "glow overlay"*/
   nav ul {
     list-style-type: none;
     padding: 0;
@@ -76,17 +79,18 @@
   }
 
 
-  nav li a, .fakebutton a{
+  nav li, .fakebutton a{
     text-decoration: none;
     color: black;
   }
 
 
-  nav li:hover a,.fakebutton:hover a{
-    color: white;
+  nav li:hover,.fakebutton:hover a{
+    color: orangered;
   }
   
 
+  /*fake button "glow overlay end here"*/
   
 
   article {
@@ -156,14 +160,13 @@ section{
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: orange; 
+  background: #779977; 
   border-radius: 10px;
-
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: orangered; 
+  background: #77bb77; 
 }
 
 .roundImg{
@@ -173,3 +176,125 @@ section{
 
   
   /* scroll bar<===================================*/
+
+
+/*yellow pages=================>*/
+
+.cardholder{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+.card {
+  margin: 4px;
+  padding: 4px;
+  min-width: 200px;
+  min-height: 160px;
+  background-color: orange;
+  color: black;
+  border-radius: 8px 8px 8px 16px;
+}
+.card .title {
+  margin: 4px;
+  padding: 4px;
+  background-color: #ffffff88;
+  color: black;
+  border-radius: 8px 8px 8px 16px;
+}
+
+.card.own{
+
+  background-color: darkgrey;
+  color: white;
+
+}
+.card.offer{
+
+  background-color: orangered;
+  color: white;
+
+}
+.card.store{
+
+  background-color: yellowgreen;
+  color: white;
+
+}
+
+
+/*<=================yellow pages*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.filterLine{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.fixedImg{
+display: block;
+max-width:640px;
+width: auto;
+height: auto;
+object-fit: contain;
+}
+.pin{
+  background-color: black;
+  border: #2196F3 2px solid;
+}

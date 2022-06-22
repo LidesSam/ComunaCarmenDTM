@@ -11,7 +11,7 @@
 <body>
 
 
- <header>
+  <header>
     <img src="./assets/img/comunacarmelogo-mini.png" class="roundImg"></img>
     <h2>Reclamos(Demostrativo)</h2>
   </header>
@@ -19,7 +19,9 @@
   <section>
     <nav>
       <ul>
-        <li><a href="./index.html">Principal</a></li>
+        <a href="./index.html">
+          <li>Principal</li>
+        </a>
 
       </ul>
     </nav>
@@ -32,29 +34,30 @@
         <input type="text" id="senderEmail" value="ejemplo@gmail.com">
         <input type="text" id="cellPhone" value="3462-000000">
 
-        
 
 
-        <textarea col="20"  row="20" type="text" id="msg"></textarea>
+
+        <textarea col="20" row="20" type="text" id="msg"></textarea>
 
         <button onclick="EnviarEmail()">Enviar</button>
       </form>
     </article>
   </section>
 
- 
+
   <footer>
     <p>Footer</p>
-    <div class="fakebutton">
-      <a  href="./contact.html">Reclamos</a>
-  </div>
-    <div class="hbox">
 
-      <a href="https://www.facebook.com/comunacarmensantafe/">
+    <div class="fakebutton">
+      <a href="./contact.html">Reclamos</a>
+    </div>
+
+    <div class="hbox">
+      <a href="https://www.facebook.com/comunacarmensantafe/" target="blank">
         <img src="assets\icons\facebook-white.png">
         </img>
       </a>
-      <a href="https://www.instagram.com/comunadecarmen/">
+      <a href="https://www.instagram.com/comunadecarmen/" target="blank">
         <img src="./assets/icons/instagram-white.png" alt="">
         </img>
       </a>
@@ -80,15 +83,15 @@
     };
 
     let msg = document.getElementById("msg").value
-    let send=true
+    let send = true
     if (msg != null) {
       if (msg != "") {
         templateParams.msg = msg
 
-        
+
 
       } else {
-        send=false
+        send = false
         alert("el mensaje esta en blanco")
       }
 
@@ -98,23 +101,23 @@
       alert("el mensaje esta en blanco")
     }
 
-if(send){
-    emailjs.send("service_wfh8d2n", "template_iowgqbi", {
-      from_name: templateParams.name,
-      message: templateParams.msg,
-      reply_to: "lides.sam@gmail.com",
-    }).then(function (response) {
-      alert("se a enviado el mensaje exitosamente")
-      //clear msg
-      document.getElementById("msg").value = ""
-      console.log('SUCCESS!', response.status, response.text);
-    }, function (error) {
-      alert("Error al enviar el mensaje:", error)
-      console.log('FAILED...', error);
-    });;
-  }else{
-    
-  }
+    if (send) {
+      emailjs.send("service_wfh8d2n", "template_iowgqbi", {
+        from_name: templateParams.name,
+        message: templateParams.msg,
+        reply_to: "lides.sam@gmail.com",
+      }).then(function (response) {
+        alert("se a enviado el mensaje exitosamente")
+        //clear msg
+        document.getElementById("msg").value = ""
+        console.log('SUCCESS!', response.status, response.text);
+      }, function (error) {
+        alert("Error al enviar el mensaje:", error)
+        console.log('FAILED...', error);
+      });;
+    } else {
+
+    }
 
   }
 </script>
